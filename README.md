@@ -6,8 +6,13 @@ Open a terminal, execute this one command:
 ```
 wget -qO- https://git.io/J8asc | bash
 ```
+You can also execute the same command to update Zoom.
 
 ### Uninstallation
+Open a terminal, execute this command:
+```
+wget -qO- https://git.io/J8aGM | bash
+```
 
 ### Credits
 Thanks to [**@ptitSeb**](http://github.com/ptitSeb/) for creating box86 and box64, and to [**@Itai-Nelken**](http://github.com/Itai-Nelken/) for providing the libraries to get it to work.
