@@ -45,11 +45,11 @@ function setup-zoom() {
     wget $BINARY_LINK -O zoom.tar.xz || error "Failed to download Zoom archive."
     tar -xvf zoom.tar.xz || error "Failed to extract Zoom archive."
     rm zoom.tar.xz || error "Failed to remove zoom archive, as it isn't needed anymore."
-    wget https://raw.githubusercontent.com/chunky-milk/ZoomClient-ARM/master/zoom_x64_libs.zip || error "Failed to download zoom x64 libraries!"
+    wget https://github.com/chunky-milk/ZoomClient-ARM/raw/master/zoom_x64_libs.zip || error "Failed to download zoom x64 libraries!"
     unzip zoom_x64_libs.zip || error "Failed to extract zoom libraries."
     mv zoom_x64_libs/* zoom/ || error "Failed to move zoom x64 libraries to zoom folder."
     rm -r $HOME/zoom_x64_libs || error "Failed to remove library folder."
-    cd $HOME/zoom && wget https://raw.githubusercontent.com/chunky-milk/ZoomClient-ARM/master/icon.png || error "Failed to download icon."
+    cd $HOME/zoom && wget https://github.com/chunky-milk/ZoomClient-ARM/raw/master/icon.png || error "Failed to download icon."
     echo "[Desktop Entry]
     Name=Zoom
     Exec=$HOME/zoom/zoom
