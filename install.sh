@@ -59,7 +59,7 @@ Type=Application
 Comment=Teleconferencing Platform
 Categories=Network;
 Terminal=true" > $HOME/.local/share/applications/zoom.desktop || error "Failed to create desktop shortcut."
-    cp $HOME/.local/share/applications/zoom.desktop $HOME/desktop || error "Failed to copy desktop shortcut to desktop."
+    cp $HOME/.local/share/applications/zoom.desktop $HOME/Desktop || error "Failed to copy desktop shortcut to desktop."
 }
 
 # Things start to happen here
