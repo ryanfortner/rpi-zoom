@@ -70,3 +70,4 @@ sleep 5
 echo "Continuing..."
 install-depends
 setup-zoom
+echo "Done"
