@@ -51,14 +51,14 @@ function setup-zoom() {
     rm -r $HOME/zoom_x64_libs || error "Failed to remove library folder."
     cd $HOME/zoom && wget https://github.com/chunky-milk/ZoomClient-ARM/raw/master/icon.png || error "Failed to download icon."
     echo "[Desktop Entry]
-    Name=Zoom
-    Exec=$HOME/zoom/zoom
-    Icon=$HOME/zoom/icon.png
-    Path=$HOME/zoom/
-    Type=Application
-    Comment=Teleconferencing Platform
-    Categories=Network;
-    Terminal=true" > $HOME/.local/share/applications/zoom.desktop || error "Failed to create desktop shortcut."
+Name=Zoom
+Exec=$HOME/zoom/zoom
+Icon=$HOME/zoom/icon.png
+Path=$HOME/zoom/
+Type=Application
+Comment=Teleconferencing Platform
+Categories=Network;
+Terminal=true" > $HOME/.local/share/applications/zoom.desktop || error "Failed to create desktop shortcut."
     cp $HOME/.local/share/applications/zoom.desktop $HOME/desktop || error "Failed to copy desktop shortcut to desktop."
 }
 
