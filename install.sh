@@ -58,7 +58,7 @@ Path=$HOME/zoom/
 Type=Application
 Comment=Teleconferencing Platform
 Categories=Network;
-Terminal=true" > $HOME/.local/share/applications/zoom.desktop || error "Failed to create desktop shortcut."
+Terminal=false" > $HOME/.local/share/applications/zoom.desktop || error "Failed to create desktop shortcut."
     cp $HOME/.local/share/applications/zoom.desktop $HOME/Desktop || error "Failed to copy desktop shortcut to desktop."
 }
 
