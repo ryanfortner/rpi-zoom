@@ -19,4 +19,4 @@ rm -f $HOME/zoom_x64_libs.zip
 rm $HOME/.local/share/applications/zoom.desktop || error "Failed to remove desktop shortcut."
 rm $HOME/Desktop/zoom.desktop
 
-echo "Bye!"
+echo "Have a nice day."

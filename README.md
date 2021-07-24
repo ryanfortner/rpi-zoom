@@ -6,7 +6,7 @@ Open a terminal, execute this one command:
 ```
 wget -qO- https://git.io/J8asc | bash
 ```
-You can also execute the same command to update Zoom.
+WARNING: don't update zoom from within the program! Simply run the installation script again to update.
 
 ### Uninstallation
 Open a terminal, execute this command:

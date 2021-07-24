@@ -62,6 +62,14 @@ Terminal=false" > $HOME/.local/share/applications/zoom.desktop || error "Failed 
     cp $HOME/.local/share/applications/zoom.desktop $HOME/Desktop || error "Failed to copy desktop shortcut to desktop."
 }
 
+function endmessage() {
+    RED='\033[0;31m'
+    NC='\033[0m' 
+    echo -e "${RED}!!! WARNING: Don't update Zoom from within the program!"
+    echo -e "${RED}Instead, simply run this script again to update."
+    echo -e "${NC}Have a nice day."
+}
+
 # Things start to happen here
 echo "Installing zoom for $ARCH."
 echo "To cancel installation, click Ctrl+C in the next 5 seconds."
@@ -70,4 +78,5 @@ sleep 5
 echo "Continuing..."
 install-depends
 setup-zoom
+endmessage
 echo "Done"
