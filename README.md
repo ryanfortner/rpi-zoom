@@ -4,7 +4,7 @@ using [box86](https://github.com/ptitSeb/box86/) or [box64](https://github.com/p
 ### Installation
 Open a terminal, execute this one command:
 ```
-wget -qO- https://git.io/J8asc | bash
+wget https://github.com/chunky-milk/ZoomClient-ARM/raw/master/install.sh; bash install.sh; rm install.sh
 ```
 WARNING: don't update zoom from within the program! Simply run the installation script again to update.
 
