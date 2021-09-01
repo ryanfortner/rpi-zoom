@@ -1,5 +1,8 @@
 #!/bin/bash
 
+BINARY_LINK='https://zoom.us/client/latest/zoom_x86_64.tar.xz'
+ARCH="$(arch)"
+
 # define error function
 function error {
   echo -e "\\e[91m$1\\e[39m"
