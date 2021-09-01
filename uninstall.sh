@@ -16,6 +16,7 @@ rm -r $HOME/zoom
 rm -f $HOME/zoom.tar.xz
 rm -f $HOME/zoom_x64_libs
 rm -f $HOME/zoom_x64_libs.zip
+rm -rf $HOME/zupdate
 rm $HOME/.local/share/applications/zoom.desktop && rm -f $HOME/.local/share/applications/zupdate.desktop && rm -f $HOME/.config/autostart/zupdate.desktop || error "Failed to remove desktop shortcuts"
 rm $HOME/Desktop/zoom.desktop
 
