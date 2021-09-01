@@ -62,6 +62,33 @@ Terminal=false" > $HOME/.local/share/applications/zoom.desktop || error "Failed 
     cp $HOME/.local/share/applications/zoom.desktop $HOME/Desktop || error "Failed to copy desktop shortcut to desktop."
 }
 
+function install-updater() {
+  mkdir -p $HOME/zupdate
+  cd $HOME/zupdate
+  wget https://raw.githubusercontent.com/chunky-milk/ZoomClient-ARM/master/autoupdate.sh || error "Failed to download autoupdate script."
+  chmod +x autoupdate.sh
+  echo "[Desktop Entry]
+Name=Zoom Updater
+Exec=$HOME/zupdate/autoupdate.sh
+Icon=$HOME/zoom/icon.png
+Path=$HOME/zupdate
+Type=Application
+Comment=Teleconferencing Platform (Updater)
+Categories=Network;
+Terminal=false" > $HOME/.config/autostart/zupdate.desktop || error "Failed to create autoupdate entry."
+  echo "[Desktop Entry]
+Name=Zoom Updater
+Exec=$HOME/zupdate/autoupdate.sh
+Icon=$HOME/zoom/icon.png
+Path=$HOME/zupdate
+Type=Application
+Comment=Teleconferencing Platform (Updater)
+Categories=Network;
+Terminal=true" > $HOME/.local/share/applications/zupdate.desktop || error "Failed to create desktop entry"
+  echo "
+Zoom will now be updated on each boot of the OS. To update manually, click on the Zoom Updater icon in the menu."
+}
+
 function endmessage() {
     RED='\033[0;31m'
     NC='\033[0m' 
@@ -76,7 +103,16 @@ echo "To cancel installation, click Ctrl+C in the next 5 seconds."
 sleep 5
 
 echo "Continuing..."
+check_internet
 install-depends
 setup-zoom
-endmessage
+printf "Do you want automatic updates? "
+while true; do
+  read -p "(y/n) " choice
+  case "$choice" in 
+    y|Y ) install-updater && break ;;
+    n|N ) echo "Updates will not be enabled." && endmessage && break ;;
+    * ) echo "Invalid input!";;
+  esac
+done
 echo "Done"
