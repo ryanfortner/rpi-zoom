@@ -23,8 +23,8 @@ function install-depends() {
     if [ ! -z "$(file "$(readlink -f "/sbin/init")" | grep 64)" ];then
         if ! command -v box64 > /dev/null; then
             echo "Installing box64..."
-            sudo wget https://box64.armlinux.ml/box64.list -O /etc/apt/sources.list.d/box64.list || error "Failed to install .list file."
-            wget -qO- https://box64.armlinux.ml/KEY.gpg | sudo apt-key add - || error "Failed to install gpg key."
+            sudo wget http://ryanfortner.github.io/box64-debs/box64.list -O /etc/apt/sources.list.d/box64.list || error "Failed to install .list file."
+            wget -qO- http://ryanfortner.github.io/box64-debs/KEY.gpg | sudo apt-key add - || error "Failed to install gpg key."
             sudo apt update && sudo apt install box64 -y || error "Failed to run apt update & apt install box64."
         else
             echo "box64 already installed, continuing..."
@@ -32,8 +32,8 @@ function install-depends() {
     elif [ ! -z "$(file "$(readlink -f "/sbin/init")" | grep 32)" ];then
         if ! command -v box86 > /dev/null; then
             echo "Installing box86..."
-            sudo wget https://box86.armlinux.ml/box64.list -O /etc/apt/sources.list.d/box86.list || error "Failed to install .list file."
-            wget -qO- https://box86.armlinux.ml/KEY.gpg | sudo apt-key add - || error "Failed to install gpg key."
+            sudo wget http://ryanfortner.github.io/box86-debs/box86.list -O /etc/apt/sources.list.d/box86.list || error "Failed to install .list file."
+            wget -qO- http://ryanfortner.github.io/box86-debs/KEY.gpg | sudo apt-key add - || error "Failed to install gpg key."
             sudo apt update && sudo apt install box86 -y || error "Failed to run apt update & apt install box86."
         else
             echo "box86 already installed, continuing..."
@@ -55,11 +55,11 @@ function setup-zoom() {
     wget $BINARY_LINK -O zoom.tar.xz || error "Failed to download Zoom archive."
     tar -xvf zoom.tar.xz || error "Failed to extract Zoom archive."
     rm zoom.tar.xz || error "Failed to remove zoom archive, as it isn't needed anymore."
-    wget https://github.com/chunky-milk/ZoomClient-ARM/raw/master/zoom_x64_libs.zip || error "Failed to download zoom x64 libraries!"
+    wget https://github.com/ryanfortner/ZoomClient-ARM/raw/master/zoom_x64_libs.zip || error "Failed to download zoom x64 libraries!"
     unzip zoom_x64_libs.zip || error "Failed to extract zoom libraries."
     mv zoom_x64_libs/* zoom/ || error "Failed to move zoom x64 libraries to zoom folder."
     rm -r $HOME/zoom_x64_libs || error "Failed to remove library folder."
-    cd $HOME/zoom && wget https://github.com/chunky-milk/ZoomClient-ARM/raw/master/icon.png || error "Failed to download icon."
+    cd $HOME/zoom && wget https://github.com/ryanfortner/ZoomClient-ARM/raw/master/icon.png || error "Failed to download icon."
     echo "[Desktop Entry]
 Name=Zoom
 Exec=$HOME/zoom/zoom
