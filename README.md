@@ -23,6 +23,5 @@ wget -qO- https://git.io/J8aGM | bash
 Thanks to [**@ptitSeb**](http://github.com/ptitSeb/) for creating box86 and box64, and to [**@Itai-Nelken**](http://github.com/Itai-Nelken/) for providing the libraries to get it to work.
 
 ### To do
-- [x] uninstallation script
-- [ ] daily updater script
-- [ ] package into deb?
+- [x] installation & uninstallation script
+- [x] daily updater script
