@@ -85,6 +85,12 @@ Type=Application
 Comment=Teleconferencing Platform (Updater)
 Categories=Network;
 Terminal=true" > $HOME/.local/share/applications/zupdate.desktop || error "Failed to create desktop entry"
+  if [ -z "$(cat ~/.config/mimeapps.list | grep 'zoom.desktop')" ];then
+    echo "Associating Zoom mimetypes..."
+    echo "[Added Associations]
+x-scheme-handler/zoomus=zoom.desktop;
+x-scheme-handler/zoommtg=zoom.desktop;" >> ~/.config/mimeapps.list
+  fi
   echo "
 Zoom will now be updated on each boot of the OS. To update manually, click on the Zoom Updater icon in the menu."
 }
