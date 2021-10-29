@@ -45,11 +45,11 @@ function setup-zoom() {
     wget $BINARY_LINK -O zoom.tar.xz || error "Failed to download Zoom archive."
     tar -xvf zoom.tar.xz || error "Failed to extract Zoom archive."
     rm zoom.tar.xz || error "Failed to remove zoom archive, as it isn't needed anymore."
-    wget https://github.com/ryanfortner/ZoomClient-ARM/raw/master/zoom_x64_libs.zip || error "Failed to download zoom x64 libraries!"
+    wget https://github.com/ryanfortner/rpi-zoom/raw/master/zoom_x64_libs.zip || error "Failed to download zoom x64 libraries!"
     unzip zoom_x64_libs.zip || error "Failed to extract zoom libraries."
     mv zoom_x64_libs/* zoom/ || error "Failed to move zoom x64 libraries to zoom folder."
     rm -r $HOME/zoom_x64_libs || error "Failed to remove library folder."
-    cd $HOME/zoom && wget https://github.com/ryanfortner/ZoomClient-ARM/raw/master/icon.png || error "Failed to download icon."
+    cd $HOME/zoom && wget https://github.com/ryanfortner/rpi-zoom/raw/master/icon.png || error "Failed to download icon."
     echo "[Desktop Entry]
 Name=Zoom
 Exec=$HOME/zoom/zoom
@@ -65,7 +65,7 @@ Terminal=false" > $HOME/.local/share/applications/zoom.desktop || error "Failed 
 function install-updater() {
   mkdir -p $HOME/zupdate
   cd $HOME/zupdate
-  wget https://raw.githubusercontent.com/ryanfortner/ZoomClient-ARM/master/autoupdate.sh || error "Failed to download autoupdate script."
+  wget https://raw.githubusercontent.com/ryanfortner/rpi-zoom/master/autoupdate.sh || error "Failed to download autoupdate script."
   chmod +x autoupdate.sh
   echo "[Desktop Entry]
 Name=Zoom Updater
