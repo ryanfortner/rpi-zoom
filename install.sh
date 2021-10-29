@@ -112,7 +112,7 @@ echo "Continuing..."
 check_internet
 install-depends
 setup-zoom
-printf "Do you want automatic updates? "
+printf "Do you want automatic updates on each boot? "
 while true; do
   read -p "(y/n) " choice
   case "$choice" in 
