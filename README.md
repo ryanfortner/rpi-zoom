@@ -4,7 +4,7 @@ Run Zoom on your Raspberry Pi using [box86](https://github.com/ptitSeb/box86/) o
 ### Installation
 Open a terminal, execute this one command:
 ```
-wget https://git.io/JXCRd; bash install.sh; rm install.sh
+wget https://git.io/JXCRd -O install.sh; bash install.sh; rm install.sh
 ```
 WARNING: don't update zoom from within the program! Simply run the installation script again to update, or if you selected automatic updates, Zoom will update on each boot.
 
