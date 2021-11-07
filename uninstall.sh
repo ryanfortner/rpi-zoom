@@ -20,4 +20,4 @@ rm -rf $HOME/zupdate
 rm $HOME/.local/share/applications/zoom.desktop && rm -f $HOME/.local/share/applications/zupdate.desktop && rm -f $HOME/.config/autostart/zupdate.desktop || error "Failed to remove desktop shortcuts"
 rm $HOME/Desktop/zoom.desktop
 
-echo "Have a nice day."
+echo "Done! Have a nice day."

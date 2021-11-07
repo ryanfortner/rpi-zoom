@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BINARY_LINK='https://zoom.us/client/latest/zoom_x86_64.tar.xz'
+BINARY_LINK_64='https://zoom.us/client/latest/zoom_x86_64.tar.xz'
 ARCH="$(arch)"
 
 # define error function
@@ -42,7 +42,15 @@ function setup-zoom() {
     rm -f $HOME/.local/share/applications/zoom.desktop
     rm -f $HOME/Desktop/zoom.desktop
     cd $HOME || error "Failed to navigate to user home directory."
-    wget $BINARY_LINK -O zoom.tar.xz || error "Failed to download Zoom archive."
+    if [ ! -z "$(file "$(readlink -f "/sbin/init")" | grep 64)" ];then
+      echo "downloading zoom x86_64..."
+      wget $BINARY_LINK_64 -O zoom.tar.xz || error "Failed to download zoom for arm64!"
+    elif [ ! -z "$(file "$(readlink -f "/sbin/init")" | grep 32)" ];then
+      echo "downloading zoom for 32-bit..."
+      wget 'https://zoom.us/client/5.4.53391.1108/zoom_i686.tar.xz' -O zoom.tar.xz || wget 'https://zoom.com/client/5.4.53391.1108/zoom_i686.tar.xz' -O zoom.tar.xz || wget 'https://d11yldzmag5yn.cloudfront.net/prod/5.4.53391.1108/zoom_i686.tar.xz' -O zoom.tar.xz|| error 'Failed to download Zoom i686!'
+    else
+        error "Failed to detect architecture. Exiting..."
+    fi
     tar -xvf zoom.tar.xz || error "Failed to extract Zoom archive."
     rm zoom.tar.xz || error "Failed to remove zoom archive, as it isn't needed anymore."
     wget https://github.com/ryanfortner/rpi-zoom/raw/master/zoom_x64_libs.zip || error "Failed to download zoom x64 libraries!"
