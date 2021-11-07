@@ -1,17 +1,17 @@
 # Zoom Client for Arm
-using [box86](https://github.com/ptitSeb/box86/) or [box64](https://github.com/ptitSeb/box64/), depending on your system architecure.
+Run Zoom on your Raspberry Pi using [box86](https://github.com/ptitSeb/box86/) or [box64](https://github.com/ptitSeb/box64/)!
 
 ### Installation
 Open a terminal, execute this one command:
 ```
-wget https://github.com/chunky-milk/ZoomClient-ARM/raw/master/install.sh; bash install.sh; rm install.sh
+wget https://git.io/JXCRd; bash install.sh; rm install.sh
 ```
-WARNING: don't update zoom from within the program! Simply run the installation script again to update.
+WARNING: don't update zoom from within the program! Simply run the installation script again to update, or if you selected automatic updates, Zoom will update on each boot.
 
 ### Uninstallation
 Open a terminal, execute this command:
 ```
-wget -qO- https://git.io/J8aGM | bash
+wget -qO- https://git.io/JXC08 | bash
 ```
 
 ### Notes
@@ -20,7 +20,3 @@ wget -qO- https://git.io/J8aGM | bash
 
 ### Credits
 Thanks to [**@ptitSeb**](http://github.com/ptitSeb/) for creating box86 and box64, and to [**@Itai-Nelken**](http://github.com/Itai-Nelken/) for providing the libraries to get it to work.
-
-### To do
-- [x] installation & uninstallation script
-- [x] daily updater script
