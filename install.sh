@@ -77,6 +77,7 @@ function install-updater() {
   cd $HOME/zupdate
   wget https://raw.githubusercontent.com/ryanfortner/rpi-zoom/master/autoupdate.sh || error "Failed to download autoupdate script."
   chmod +x autoupdate.sh
+  mkdir -p $HOME/.config/autostart
   echo "[Desktop Entry]
 Name=Zoom Updater
 Exec=$HOME/zupdate/autoupdate.sh
