@@ -60,6 +60,15 @@ function setup-zoom() {
     fi
     rm zoom.tar.xz || error "Failed to remove zoom archive, as it isn't needed anymore."
     cd $HOME/zoom && wget https://github.com/ryanfortner/rpi-zoom/raw/master/icon.png || error "Failed to download icon."
+    if [ ! -f $HOME/.config/mimeapps.list ]; then
+        touch $HOME/.config/mimeapps.list
+    fi
+    if [ -z "$(cat ~/.config/mimeapps.list | grep 'zoom.desktop')" ];then
+        echo "Associating Zoom mimetypes..."
+        echo "[Added Associations]
+x-scheme-handler/zoomus=zoom.desktop;
+x-scheme-handler/zoommtg=zoom.desktop;" >> ~/.config/mimeapps.list
+    fi
     echo "[Desktop Entry]
 Name=Zoom
 Exec=$HOME/zoom/zoom
@@ -96,12 +105,6 @@ Type=Application
 Comment=Teleconferencing Platform (Updater)
 Categories=Network;
 Terminal=true" > $HOME/.local/share/applications/zupdate.desktop || error "Failed to create desktop entry"
-  if [ -z "$(cat ~/.config/mimeapps.list | grep 'zoom.desktop')" ];then
-    echo "Associating Zoom mimetypes..."
-    echo "[Added Associations]
-x-scheme-handler/zoomus=zoom.desktop;
-x-scheme-handler/zoommtg=zoom.desktop;" >> ~/.config/mimeapps.list
-  fi
   echo "
 Zoom will now be updated on each boot of the OS. To update manually, click on the Zoom Updater icon in the menu."
 }
