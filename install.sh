@@ -45,6 +45,7 @@ function setup-zoom() {
     if [ ! -z "$(file "$(readlink -f "/sbin/init")" | grep 64)" ];then
       echo "downloading zoom x86_64..."
       wget $BINARY_LINK_64 -O zoom.tar.xz || error "Failed to download zoom for arm64!"
+      tar -xvf zoom.tar.xz || error "Failed to extract Zoom archive."
       wget https://github.com/ryanfortner/rpi-zoom/raw/master/zoom_x64_libs.zip || error "Failed to download zoom x64 libraries!"
       unzip zoom_x64_libs.zip || error "Failed to extract zoom libraries."
       mv zoom_x64_libs/* zoom/ || error "Failed to move zoom x64 libraries to zoom folder."
@@ -53,10 +54,10 @@ function setup-zoom() {
       echo "downloading zoom for 32-bit..."
       wget 'https://zoom.us/client/5.4.53391.1108/zoom_i686.tar.xz' -O zoom.tar.xz || wget 'https://zoom.com/client/5.4.53391.1108/zoom_i686.tar.xz' -O zoom.tar.xz || wget 'https://d11yldzmag5yn.cloudfront.net/prod/5.4.53391.1108/zoom_i686.tar.xz' -O zoom.tar.xz|| error 'Failed to download Zoom i686!'
       sudo apt-get install libxcb-xtest0 libxcb-xfixes0 libturbojpeg0 -y || error "Failed to install dependencies!"
+      tar -xvf zoom.tar.xz || error "Failed to extract Zoom archive."
     else
         error "Failed to detect architecture. Exiting..."
     fi
-    tar -xvf zoom.tar.xz || error "Failed to extract Zoom archive."
     rm zoom.tar.xz || error "Failed to remove zoom archive, as it isn't needed anymore."
     cd $HOME/zoom && wget https://github.com/ryanfortner/rpi-zoom/raw/master/icon.png || error "Failed to download icon."
     echo "[Desktop Entry]
