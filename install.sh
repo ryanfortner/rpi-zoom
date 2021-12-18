@@ -9,6 +9,16 @@ function error {
   exit 1
 }
 
+function check_internet() {
+  printf "Checking if you are online..."
+  wget -q --spider http://github.com
+  if [ $? -eq 0 ]; then
+    echo "Online. Continuing."
+  else
+    error "Offline. Go connect to the internet then run the script again."
+  fi
+}
+
 function install-depends() {
     if [ ! -z "$(file "$(readlink -f "/sbin/init")" | grep 64)" ];then
         if ! command -v box64 > /dev/null; then
